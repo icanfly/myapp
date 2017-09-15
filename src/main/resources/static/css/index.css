@@ -22,5 +22,6 @@ body, html {
 #mapDiv {
     height: 450px;
     max-height: 700px;
-    width:45%;
+    width:50%;
+    float: right;
 }

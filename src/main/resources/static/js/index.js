@@ -12,40 +12,56 @@ var currentLongitude = defaultLatitude;
 $(document).ready(function () {
     initControl();
     initBaiduMap();
-    
+
 });
 
 function initControl() {
     source = $('input:radio[name="source"]:checked').val();
-    $('input:radio[name="source"]').click(function(){
+    $('input:radio[name="source"]').click(function () {
         source = $(this).val();
     });
 
     searchMeters = $("#meters").val();
-    if(!searchMeters){
+    if (!searchMeters) {
         searchMeters = defaultSearchMeters;
         $("#meters").val(searchMeters);
     }
     $("#meters").change(function () {
         searchMeters = $(this).val();
-        if(!searchMeters){
+        if (!searchMeters) {
             searchMeters = defaultSearchMeters;
         }
-        $(this).attr('placeholder','当前值:'+searchMeters);
+        $(this).attr('placeholder', '当前值:' + searchMeters);
+    });
+    $("#meters").keyup(function () {
+        filterNoneDigits($("#meters"));
+    });
+    $("#meters").bind('paste', function () {
+        filterNoneDigits($("#meters"));
     });
 
     querySize = $("#querySize").val();
-    if(!querySize){
+    if (!querySize) {
         querySize = defaultQuerySize;
         $("#querySize").val(querySize);
     }
     $("#querySize").change(function () {
         querySize = $(this).val();
-        if(!querySize){
+        if (!querySize) {
             querySize = defaultQuerySize;
         }
-        $(this).attr('placeholder','当前值:'+querySize);
+        $(this).attr('placeholder', '当前值:' + querySize);
     });
+    $("#querySize").keyup(function () {
+        filterNoneDigits($("#querySize"));
+    });
+    $("#querySize").bind('paste', function () {
+        filterNoneDigits($("#querySize"));
+    });
+}
+
+function filterNoneDigits(input) {
+    input.val(input.val().replace(/\D/g, ''));
 }
 
 function initBaiduMap() {
