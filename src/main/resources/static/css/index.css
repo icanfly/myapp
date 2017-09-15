@@ -20,7 +20,7 @@ body, html {
 }
 
 #mapDiv {
-    height: 500px;
+    height: 450px;
+    max-height: 700px;
     width:45%;
-    float: right;
 }
