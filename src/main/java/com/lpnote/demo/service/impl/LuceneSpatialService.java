@@ -1,7 +1,7 @@
 package com.lpnote.demo.service.impl;
 
 import com.google.common.collect.Lists;
-import com.lpnote.demo.common.util.JacksonFootTruckMapper;
+import com.lpnote.demo.common.util.JacksonMapper;
 import com.lpnote.demo.entity.FootTruck;
 import com.lpnote.demo.entity.FootTruckQuery;
 import org.apache.commons.lang3.StringUtils;
@@ -46,6 +46,10 @@ import java.util.stream.Collectors;
 @Service
 public class LuceneSpatialService {
 
+    private String fileName;
+
+    private static final String DEFAULT_FILENAME = "/6a9r-agq8.json";
+
     /**
      * Spatial4j上下文
      * 1: SpatialContext初始化可由SpatialContextFactory配置
@@ -72,7 +76,7 @@ public class LuceneSpatialService {
     private IndexWriter indexWriter;
 
     @PostConstruct
-    protected void init() throws Exception {
+    public void init() throws Exception {
         /**
          * SpatialContext也可以通过SpatialContextFactory工厂类来构建
          * */
@@ -99,7 +103,7 @@ public class LuceneSpatialService {
     }
 
     @PreDestroy
-    protected void destroy() throws IOException {
+    public void destroy() throws IOException {
         close();
     }
 
@@ -117,14 +121,14 @@ public class LuceneSpatialService {
 
     protected void createIndex() throws Exception {
         InputStream is = null;
-        try{
-            is  = this.getClass().getResourceAsStream("/6a9r-agq8.json");
-            List<FootTruck> footTrucks = JacksonFootTruckMapper.deserialize(is);
+        try {
+            is = this.getClass().getResourceAsStream(fileName == null ? DEFAULT_FILENAME : fileName);
+            List<FootTruck> footTrucks = JacksonMapper.deserialize2FootTruckList(is);
             indexWriter.addDocuments(newSampleDocument(ctx, strategy, footTrucks));
             indexWriter.flush();
             indexWriter.commit();
-        }finally {
-            if(is != null){
+        } finally {
+            if (is != null) {
                 is.close();
             }
         }
@@ -143,7 +147,7 @@ public class LuceneSpatialService {
     /**
      * 创建Document索引对象
      */
-    protected List<Document> newSampleDocument(SpatialContext ctx, SpatialStrategy strategy, List<FootTruck> footTrucks) {
+    private List<Document> newSampleDocument(SpatialContext ctx, SpatialStrategy strategy, List<FootTruck> footTrucks) {
         List<Document> documents = Lists.newLinkedList(footTrucks.stream().filter(ft ->
                 ft.getLatitude() != 0.d && ft.getLongitude() != 0.d
         ).map(ft -> {
@@ -223,5 +227,11 @@ public class LuceneSpatialService {
         return footTrucks;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
 
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 }

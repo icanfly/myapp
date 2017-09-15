@@ -1,6 +1,6 @@
 package com.lpnote.demo.service.impl;
 
-import com.lpnote.demo.common.util.JacksonFootTruckMapper;
+import com.lpnote.demo.common.util.JacksonMapper;
 import com.lpnote.demo.entity.FootTruck;
 import com.lpnote.demo.entity.FootTruckQuery;
 import com.lpnote.demo.service.FootTruckService;
@@ -44,9 +44,13 @@ public class OnlineFootTruckService implements FootTruckService {
         Call call = okHttpClient.newCall(request);
         Response response = call.execute();
         if (response.isSuccessful()) {
-            return JacksonFootTruckMapper.deserialize(response.body().string());
+            return JacksonMapper.deserialize2FootTruckList(response.body().string());
         }
 
         throw new IOException(response.code() + ":" + response.message());
+    }
+
+    public void setOkHttpClient(OkHttpClient okHttpClient) {
+        this.okHttpClient = okHttpClient;
     }
 }

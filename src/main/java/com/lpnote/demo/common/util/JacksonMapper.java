@@ -12,15 +12,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by luopeng on 2017/9/14.
  */
-public class JacksonFootTruckMapper {
+public class JacksonMapper {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
 
-    private static JavaType javaType = objectMapper.getTypeFactory().constructParametricType(ArrayList.class, FootTruck.class);
+    private static JavaType listType = objectMapper.getTypeFactory().constructParametricType(ArrayList.class, FootTruck.class);
 
     static {
         objectMapper.configure(JsonParser.Feature.ALLOW_MISSING_VALUES, true);
@@ -28,16 +29,20 @@ public class JacksonFootTruckMapper {
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
 
-    public static List<FootTruck> deserialize(String jsonData) throws IOException {
-        return objectMapper.readValue(jsonData, javaType);
+    public static List<FootTruck> deserialize2FootTruckList(String jsonData) throws IOException {
+        return objectMapper.readValue(jsonData, listType);
     }
 
-    public static List<FootTruck> deserialize(InputStream is) throws IOException {
-        return objectMapper.readValue(is,javaType);
+    public static List<FootTruck> deserialize2FootTruckList(InputStream is) throws IOException {
+        return objectMapper.readValue(is, listType);
     }
 
-    public static String serialize(List<FootTruck> footTrucks) throws JsonProcessingException {
-        return objectMapper.writeValueAsString(footTrucks);
+    public static Map<String,Object> deserialize2Map(String jsonData) throws IOException {
+        return objectMapper.readValue(jsonData,Map.class);
+    }
+
+    public static String serialize(Object object) throws JsonProcessingException {
+        return objectMapper.writeValueAsString(object);
     }
 
 }

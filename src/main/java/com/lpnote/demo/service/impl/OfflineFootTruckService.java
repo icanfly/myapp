@@ -22,4 +22,8 @@ public class OfflineFootTruckService implements FootTruckService{
     public List<FootTruck> query(FootTruckQuery query) throws Exception {
         return luceneSpatialService.search(query);
     }
+
+    public void setLuceneSpatialService(LuceneSpatialService luceneSpatialService) {
+        this.luceneSpatialService = luceneSpatialService;
+    }
 }

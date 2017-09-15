@@ -105,4 +105,44 @@ public class FootTruck {
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        FootTruck footTruck = (FootTruck) o;
+
+        if (Double.compare(footTruck.latitude, latitude) != 0)
+            return false;
+        if (Double.compare(footTruck.longitude, longitude) != 0)
+            return false;
+        if (applicant != null ? !applicant.equals(footTruck.applicant) : footTruck.applicant != null)
+            return false;
+        if (address != null ? !address.equals(footTruck.address) : footTruck.address != null)
+            return false;
+        if (items != null ? !items.equals(footTruck.items) : footTruck.items != null)
+            return false;
+        if (dayshours != null ? !dayshours.equals(footTruck.dayshours) : footTruck.dayshours != null)
+            return false;
+        return expirationDate != null ? expirationDate.equals(footTruck.expirationDate) : footTruck.expirationDate == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = applicant != null ? applicant.hashCode() : 0;
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (items != null ? items.hashCode() : 0);
+        temp = Double.doubleToLongBits(latitude);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(longitude);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (dayshours != null ? dayshours.hashCode() : 0);
+        result = 31 * result + (expirationDate != null ? expirationDate.hashCode() : 0);
+        return result;
+    }
 }

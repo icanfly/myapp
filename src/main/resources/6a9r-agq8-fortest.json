@@ -1,0 +1,38 @@
+[
+  {
+    "address": "900 BEACH ST",
+    "applicant": "Bay Area Dots, LLC",
+    "dayshours": "Mo-Su:6AM-12AM",
+    "expirationdate": "2018-03-15T00:00:00.000",
+    "fooditems": "Hot dogs: condiments: soft pretzels: soft drinks: coffee:cold beverages: pastries: bakery goods: cookies: icecream: candy: soups: churros: chestnuts: nuts: fresh fruit: fruit juices: desserts: potato chips and popcorn.",
+    "latitude": "37.8077432884455",
+    "longitude": "-122.42414994487"
+  },
+  {
+    "address": "1389 UNDERWOOD AVE",
+    "applicant": "Liang Bai Ping",
+    "dayshours": "Mo-Fr:8AM-9AM",
+    "expirationdate": "2018-03-15T00:00:00.000",
+    "fooditems": "Cold Truck: Pre-packaged sandwiches: snacks: fruit: various beverages",
+    "latitude": "37.7271104333828",
+    "longitude": "-122.388261288144"
+  },
+  {
+    "address": "567 BAY ST",
+    "applicant": "Bay Area Dots, LLC",
+    "dayshours": "Mo-Su:6AM-12AM",
+    "expirationdate": "2018-03-15T00:00:00.000",
+    "fooditems": "Hot dogs: condiments: soft pretzels: soft drinks: coffee: cold beverages: pastries: bakery goods: cookies: ice cream: candy: soups: churros: chestnuts: nuts: fresh fruit: fruit juices: desserts: potato chips and popcorn.",
+    "latitude": "0",
+    "longitude": "0"
+  },
+  {
+    "address": "1212 THOMAS AVE",
+    "applicant": "Liang Bai Ping",
+    "dayshours": "Mo-Fr:9AM-10AM/12PM-1PM",
+    "expirationdate": "2018-03-15T00:00:00.000",
+    "fooditems": "Cold Truck: Pre-packaged sandwiches: snacks: fruit: various beverages",
+    "latitude": "37.7266647697066",
+    "longitude": "-122.384144224606"
+  }
+]
