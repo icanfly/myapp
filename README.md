@@ -5,6 +5,9 @@ Food Trucks
 Create a service that tells the user what types of food trucks might be found near a specific location on a map.
 The data is available on DataSF:  https://data.sfgov.org/Permitting/Mobile-Food-Facility-Permit/rqzj-sfat
 
+[![Build Status](https://travis-ci.org/icanfly/myapp.svg)](https://travis-ci.org/icanfly/myapp)
+[![codecov](https://codecov.io/gh/icanfly/myapp/branch/master/graph/badge.svg)](https://codecov.io/gh/icanfly/myapp)
+
 # 功能描述
 
 本Demo提供两种模式的搜索服务：在线/离线。
@@ -23,14 +26,6 @@ Java语言体系
 - Spatial4j                         离线数据空间索引工具
 - Apache Common Lang3               Apache工具类库
 - OkHttp                            Http客户端类库
-
-# 测试
-
-[![Build Status](https://travis-ci.org/icanfly/myapp.svg)](https://travis-ci.org/icanfly/myapp)
-
-# 测试覆盖率
-
-[![codecov](https://codecov.io/gh/icanfly/myapp/branch/master/graph/badge.svg)](https://codecov.io/gh/icanfly/myapp)
 
 # 编译
 
