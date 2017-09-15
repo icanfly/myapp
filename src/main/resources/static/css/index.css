@@ -5,8 +5,8 @@ body, html {
     font-family: "微软雅黑";
 }
 
-#title {
-    margin: 20px;
+#head {
+    margin:3% 3% 0 3%;
 }
 
 #container {
