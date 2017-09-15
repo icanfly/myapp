@@ -24,9 +24,13 @@ Java语言体系
 - Apache Common Lang3               Apache工具类库
 - OkHttp                            Http客户端类库
 
-#测试覆盖率
+# 测试
 
-整体覆盖率：69%
+[![Build Status](https://travis-ci.org/icanfly/myapp.svg)](https://travis-ci.org/icanfly/myapp)
+
+# 测试覆盖率
+
+[![codecov](https://codecov.io/gh/icanfly/myapp/branch/master/graph/badge.svg)](https://codecov.io/gh/icanfly/myapp)
 
 # 编译
 
