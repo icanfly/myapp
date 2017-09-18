@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
+import java.io.File;
+
 @SpringBootApplication
 public class FootstrucksDemoApplication extends SpringBootServletInitializer {
 

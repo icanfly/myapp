@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 日志组件启动时，打印调试信息，并监控此文件变化，周期300秒 -->
+<configuration scan="true" scanPeriod="300 seconds" debug="false">
+
+    <springProperty scope="context" name="appName" source="spring.application.name"/>
+
+    <!-- 配置文件，包括此文件内的所有变量的配置 -->
+    <property name="LOG_PATH" value="/data/www/java/work/logs"/>
+    <property name="MY_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [TxId : %X{PtxId} , SpanId : %X{PspanId}] %-5level [%thread] %logger{36}:%L- %msg%n"/>
+
+    <contextName>${appName}</contextName>
+
+    <springProfile name="production">
+        <appender name="app-info"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${LOG_PATH}/${appName}-info.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_PATH}/${appName}-info.log.%d{yyyy-MM-dd}.gz
+                </fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>INFO</level>
+            </filter>
+            <encoder>
+                <pattern>${MY_PATTERN}</pattern>
+            </encoder>
+        </appender>
+
+        <appender name="app-err"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${LOG_PATH}/${appName}-error.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_PATH}/${appName}-error.%d{yyyy-MM-dd}.gz
+                </fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>ERROR</level>
+            </filter>
+            <encoder>
+                <pattern>${MY_PATTERN}</pattern>
+            </encoder>
+        </appender>
+        <!-- 根日志logger -->
+        <root level="info">
+            <appender-ref ref="app-info"/>
+            <appender-ref ref="app-err"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="default">
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>${MY_PATTERN}</pattern>
+            </encoder>
+        </appender>
+        <!-- 根日志logger -->
+        <root level="info">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+</configuration>

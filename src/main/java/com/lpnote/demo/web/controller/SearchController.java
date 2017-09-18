@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/foot-truck")
-public class SearchController {
+public class SearchController extends BaseController {
 
     @Autowired
     @Qualifier("onlineFootTruckService")
@@ -41,6 +41,7 @@ public class SearchController {
             }
 
         } catch (Exception e) {
+            logger.error(e.getMessage(),e);
             return Result.me().exception(e);
         }
     }

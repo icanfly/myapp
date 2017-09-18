@@ -1,6 +1,7 @@
 package com.lpnote.demo.web.controller;
 
 import com.google.common.collect.Lists;
+import com.lpnote.demo.TestBase;
 import com.lpnote.demo.common.util.JacksonMapper;
 import com.lpnote.demo.entity.FootTruck;
 import com.lpnote.demo.entity.FootTruckQuery;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -29,7 +31,8 @@ import static org.mockito.Matchers.any;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class SearchControllerTest {
+@ActiveProfiles("dev")
+public class SearchControllerTest extends TestBase {
 
     @Autowired
     private MockMvc mvc;
