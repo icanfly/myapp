@@ -18,6 +18,8 @@ The data is available on [DataSF](https://data.sfgov.org/Permitting/Mobile-Food-
 
 # 使用到的技术
 
+## 后端
+
 Java语言体系
 - SpringBoot                        整个Demo工程的骨架
 - Guava                             一些方便的工具类库
@@ -26,6 +28,13 @@ Java语言体系
 - Spatial4j                         离线数据空间索引工具
 - Apache Common Lang3               Apache工具类库
 - OkHttp                            Http客户端类库
+
+## 前端
+
+JQuery                              前端工具类库
+BaiduMap                            百度地图API
+layerUI                             前端类库
+showLoading                         JQuery showLoading plugin
 
 # 编译
 
