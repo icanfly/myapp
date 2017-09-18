@@ -31,10 +31,10 @@ Java语言体系
 
 ## 前端
 
-JQuery                              前端工具类库
-BaiduMap                            百度地图API
-layerUI                             前端类库
-showLoading                         JQuery showLoading plugin
+- JQuery                              前端工具类库
+- BaiduMap                            百度地图API
+- layerUI                             前端类库
+- ShowLoading                         JQuery showLoading plugin
 
 # 编译
 
